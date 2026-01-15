@@ -1,7 +1,6 @@
-package com.example.ordead.model.request;
+package com.example.ordead.model.request.user;
 
 import lombok.Data;
-
 
 
 /**
@@ -9,6 +8,12 @@ import lombok.Data;
  */
 @Data
 public class UserRegisterRequest {
+
+    /**
+     * 用户昵称
+     */
+    private String name;
+
     /**
      * 用户名（非空、长度4-16位、仅支持字母数字下划线）
      */

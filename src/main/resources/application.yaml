@@ -1,0 +1,44 @@
+# 应用基础配置
+spring:
+  # 应用名称
+  application:
+    name: OrDead
+  # 数据库连接配置（适配MySQL 8.x，5.x需微调驱动和URL）
+  datasource:
+    # 数据库驱动类（MySQL 8.x用com.mysql.cj.jdbc.Driver，5.x用com.mysql.jdbc.Driver）
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库连接URL（替换：localhost为数据库地址，3306为端口，ordead为你的数据库名）
+    url: jdbc:mysql://localhost:3306/ordead?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    # 数据库用户名（替换为你的数据库账号）
+    username: root
+    # 数据库密码（替换为你的数据库密码）
+    password: 123456
+    hikari:
+      # 最大连接数
+      maximum-pool-size: 10
+      # 最小空闲连接数
+      minimum-idle: 2
+      # 连接超时时间（毫秒）
+      connection-timeout: 30000
+      # 连接最大存活时间（毫秒）
+      max-lifetime: 1800000
+
+# 服务器配置
+server:
+  # 端口号
+  port: 9050
+
+# MyBatis-Plus配置（适配你之前用到的Mapper/LambdaQueryWrapper）
+mybatis-plus:
+  # 实体类别名包（替换为你的User实体类所在包）
+  type-aliases-package: com.ordead.entity
+  # Mapper.xml文件位置（若有xml映射文件需配置，无则可注释）
+  mapper-locations: classpath:mapper/**/*.xml
+  # 配置日志（开发环境建议开启，方便调试SQL）
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名自动转换（如数据库user_name映射到实体userName）
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID

@@ -44,6 +44,9 @@ public class BaseResponse<T> {
     public static <T> BaseResponse<T> success(String message, T data) {
         return new BaseResponse<>(200, message, data);
     }
+    public static <T> BaseResponse<T> error( String message) {
+        return new BaseResponse<>(500, message, null);
+    }
 
     // 静态快捷方法：构建失败响应
     public static <T> BaseResponse<T> error(int code, String message) {

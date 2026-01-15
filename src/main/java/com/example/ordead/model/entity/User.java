@@ -1,7 +1,10 @@
 package com.example.ordead.model.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -10,9 +13,15 @@ import java.util.Date;
 @Data
 public class User {
     /**
-     * 用户唯一标识（主键，自增）
+     * 用户唯一标识
      */
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
+
+    /**
+     * 用户昵称
+     */
+    private String name;
 
     /**
      * 用户名（唯一）
@@ -42,10 +51,12 @@ public class User {
     /**
      * 创建时间（用户注册时间）
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 更新时间（用户信息修改时间）
      */
-    private Date updateTime;
+    private LocalDateTime updateTime;
+
+    private Integer isDelete;
 }
